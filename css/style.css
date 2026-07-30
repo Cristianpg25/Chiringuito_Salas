@@ -53,10 +53,7 @@ header.scrolled .hamburger span{background:var(--text)}
 .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px)}
 .btn-outline-white{border:1.5px solid rgba(254,252,248,0.5);color:var(--text-white);padding:13px 32px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;background:transparent;cursor:pointer;border-radius:3px;transition:border-color 0.3s,color 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
 .btn-outline-white:hover{border-color:var(--teal);color:#6EE7DF;transform:translateY(-2px)}
-.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s ease 1.4s forwards}
-.hero-scroll span{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(254,252,248,0.5)}
-.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--teal),transparent);animation:scrollPulse 2s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+.btn-primary svg,.btn-outline-white svg,.btn-outline-dark svg{width:13px;height:13px;margin-right:8px;vertical-align:-2px;fill:currentColor}
 
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.85s ease,transform 0.85s ease}
@@ -69,6 +66,13 @@ section{padding:96px 5%}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.08}
 .btn-outline-dark{border:1.5px solid rgba(22,32,48,0.25);color:var(--text);padding:12px 28px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;background:transparent;cursor:pointer;border-radius:3px;transition:border-color 0.3s,color 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
 .btn-outline-dark:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* ── INTRO ── */
+#intro{background:var(--white);text-align:center}
+.intro-inner{max-width:760px;margin:0 auto}
+.intro-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.25;margin-bottom:12px}
+.intro-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.2rem,2.2vw,1.5rem);color:var(--teal);margin-bottom:26px}
+.intro-text{font-size:1rem;line-height:1.9;color:var(--text-mid);font-weight:300}
 
 /* ── HISTORIA ── */
 #historia{background:var(--white)}
@@ -86,14 +90,9 @@ section{padding:96px 5%}
 /* ── PLATOS ── */
 #platos{background:var(--sand)}
 .platos-header{max-width:1100px;margin:0 auto 48px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
-.platos-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.plato-card{position:relative;overflow:hidden;cursor:pointer;border-radius:2px}
-.plato-card:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
-.plato-card:nth-child(2){aspect-ratio:1/1}
-.plato-card:nth-child(3){aspect-ratio:1/1}
-.plato-card:nth-child(4){aspect-ratio:4/3}
-.plato-card:nth-child(5){aspect-ratio:4/3}
-.plato-img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;display:block}
+.platos-grid{max-width:1100px;margin:0 auto;column-count:3;column-gap:3px}
+.plato-card{display:block;width:100%;margin-bottom:3px;break-inside:avoid;position:relative;overflow:hidden;cursor:pointer;border-radius:2px}
+.plato-img{width:100%;height:auto;object-fit:cover;transition:transform 0.7s ease;display:block}
 .plato-card:hover .plato-img{transform:scale(1.05)}
 .plato-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,32,48,0.88) 0%,rgba(22,32,48,0.05) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px 20px;transition:background 0.4s}
 .plato-card:hover .plato-overlay{background:linear-gradient(to top,rgba(22,32,48,0.95) 0%,rgba(22,32,48,0.2) 60%,transparent 100%)}
@@ -110,57 +109,30 @@ section{padding:96px 5%}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:300;line-height:1;color:var(--text-white)}
 .stat-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(254,252,248,0.75);margin-top:8px;font-weight:500}
 
-/* ── GALERÍA — MARQUEE AUTO INFINITO ── */
-#galeria{background:var(--white);padding:96px 0 0}
-.galeria-header{max-width:1100px;margin:0 auto 48px;padding:0 5%}
-.marquee-section{width:100%;overflow:hidden;padding:0 0 80px;position:relative}
-.marquee-section::before,.marquee-section::after{
-  content:'';position:absolute;top:0;bottom:80px;width:120px;z-index:2;pointer-events:none;
-}
-.marquee-section::before{left:0;background:linear-gradient(to right,var(--white),transparent)}
-.marquee-section::after{right:0;background:linear-gradient(to left,var(--white),transparent)}
-.marquee-track{
-  display:flex;
-  width:max-content;
-  animation:marqueeScroll 28s linear infinite;
-  will-change:transform;
-}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-item{
-  flex:0 0 auto;
-  width:420px;
-  height:300px;
-  margin:0 8px;
-  border-radius:4px;
-  overflow:hidden;
-  position:relative;
-}
-.marquee-item img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform 0.6s ease;
-}
-.marquee-item:hover img{transform:scale(1.04)}
-@keyframes marqueeScroll{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
+/* ── GALERÍA ── */
+#galeria{background:var(--white)}
+.galeria-header{max-width:1100px;margin:0 auto 48px}
+.galeria-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.galeria-item{aspect-ratio:9/16;overflow:hidden;border-radius:4px;position:relative;display:block}
+.galeria-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
+.galeria-item:hover img{transform:scale(1.05)}
+.galeria-cta{text-align:center;margin-top:40px}
 @media(max-width:768px){
-  .marquee-item{width:280px;height:200px;margin:0 6px}
-  .marquee-section::before,.marquee-section::after{width:60px}
+  .galeria-grid{grid-template-columns:repeat(2,1fr);gap:8px}
 }
 
-/* ── CONCIERTOS ── */
+/* ── CONCIERTOS / SONIDOS DE SALAS ── */
 #conciertos{background:var(--night);padding:96px 5%}
 .conciertos-inner{max-width:1100px;margin:0 auto}
-.conciertos-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px}
-.conciertos-text .section-label{color:var(--teal)}
-.conciertos-text .section-title{color:var(--text-white)}
-.conciertos-text p{font-size:1rem;line-height:1.9;color:rgba(254,252,248,0.65);margin:20px 0 32px;font-weight:300}
-.conciertos-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,168,150,0.12);border:1px solid rgba(0,168,150,0.3);padding:10px 18px;border-radius:3px;margin-bottom:12px}
+.conciertos-heading{max-width:640px;margin:0 auto 56px;text-align:center}
+.conciertos-heading .section-title{color:var(--text-white)}
+.conciertos-divider{width:60px;height:1px;background:var(--teal);opacity:0.5;margin:24px auto;border:none}
+.conciertos-intro{font-size:1rem;line-height:1.9;color:rgba(254,252,248,0.65);margin:0 auto 32px;font-weight:300;max-width:560px}
+.conciertos-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,168,150,0.12);border:1px solid rgba(0,168,150,0.3);padding:10px 18px;border-radius:3px;margin-bottom:16px}
 .conciertos-badge span{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);font-weight:600}
 .conciertos-badge::before{content:'♪';color:var(--teal);font-size:14px}
+.conciertos-subhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.conciertos-subhead span:last-child{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(254,252,248,0.35)}
 
 /* EVENT CALENDAR POSTER */
 .events-calendar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -278,16 +250,13 @@ footer{background:var(--night);padding:52px 5% 32px}
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
   .events-calendar{grid-template-columns:repeat(2,1fr)}
-  .conciertos-top{grid-template-columns:1fr;gap:40px}
 }
 @media(max-width:900px){
   nav{display:none}
   .hamburger{display:flex}
   .historia-inner{grid-template-columns:1fr;gap:48px}
   .historia-img-badge{right:0;bottom:-16px}
-  .platos-grid{grid-template-columns:1fr 1fr}
-  .plato-card:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
-  .plato-card:nth-child(2),.plato-card:nth-child(3),.plato-card:nth-child(4),.plato-card:nth-child(5){aspect-ratio:1/1}
+  .platos-grid{column-count:2}
   .test-grid{grid-template-columns:1fr;gap:16px}
   .cta-info{grid-template-columns:1fr}
   .cta-info-item{border-right:none;border-bottom:1px solid rgba(22,32,48,0.08)}
@@ -295,11 +264,10 @@ footer{background:var(--night);padding:52px 5% 32px}
   .footer-top{grid-template-columns:1fr 1fr;gap:32px}
   section{padding:72px 5%}
   #conciertos{padding:72px 5%}
-  #galeria{padding:72px 0 0}
+  #galeria{padding:72px 5%}
 }
 @media(max-width:600px){
-  .platos-grid{grid-template-columns:1fr}
-  .plato-card:nth-child(n){grid-column:span 1;aspect-ratio:4/3}
+  .platos-grid{column-count:1}
   .stats-inner{grid-template-columns:1fr}
   .stat-item{border-right:none;border-bottom:1px solid rgba(254,252,248,0.15);padding:20px}
   .stat-item:last-child{border:none}
@@ -307,7 +275,7 @@ footer{background:var(--night);padding:52px 5% 32px}
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
   .events-calendar{grid-template-columns:1fr}
-
+  .galeria-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:375px){
   .hero-actions,.cta-actions{flex-direction:column;align-items:center}

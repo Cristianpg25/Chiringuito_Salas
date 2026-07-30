@@ -31,12 +31,6 @@ window.addEventListener('scroll',()=>{
 
 /* hero video plays automatically, no parallax needed */
 
-/* ── MARQUEE — pausa al hover, respeta reduced motion ── */
-if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-  const mt=document.getElementById('marqueeTrack')
-  if(mt)mt.style.animationPlayState='paused'
-}
-
 /* ── REVEAL ON SCROLL ── */
 const revealObs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
