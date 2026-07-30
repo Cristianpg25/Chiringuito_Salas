@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiringuito Salas — San Juan de los Terreros</title>
+<meta name="description" content="Chiringuito Salas — Más de 30 años junto al Mediterráneo en primera línea de playa. San Juan de los Terreros, Almería.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     CARTA PAGE (overlay)
+══════════════════════════════════ -->
+<div id="carta-page" role="dialog" aria-label="Carta completa" aria-modal="true">
+  <div class="carta-header">
+    <span class="carta-header-title">Carta — Chiringuito Salas</span>
+    <button class="carta-close" onclick="closeCarta()" aria-label="Cerrar carta">✕ Cerrar</button>
+  </div>
+  <div class="carta-scroll-container">
+    <p class="carta-scroll-hint">↓ Desplázate para ver la carta completa</p>
+    <br>
+    <img class="carta-page-img" src="assets/carta/carta_1.jpg" alt="Carta Chiringuito Salas — portada" loading="eager">
+    <img class="carta-page-img" src="assets/carta/Carta_2.jpg" alt="Carta Chiringuito Salas — para picar, ensaladas y para comenzar" loading="lazy">
+    <img class="carta-page-img" src="assets/carta/Carta_3.jpg" alt="Carta Chiringuito Salas — arroces, pastas y platos infantiles" loading="lazy">
+    <img class="carta-page-img" src="assets/carta/Carta_4.jpg" alt="Carta Chiringuito Salas — lonja, carnes y postres" loading="lazy">
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     HEADER
+══════════════════════════════════ -->
+<header id="header">
+  <a href="#hero" class="logo-text" aria-label="Chiringuito Salas — inicio">
+    Salas
+    <span>Chiringuito</span>
+  </a>
+  <nav role="navigation" aria-label="Navegación principal">
+    <a href="#historia">Nosotros</a>
+    <a href="#platos">Carta</a>
+    <a href="#galeria">Galería</a>
+    <a href="#conciertos">Eventos</a>
+    <a href="#contacto-cta" class="nav-cta">Reservar</a>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="openMenu()" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Menú" aria-modal="true">
+  <button class="mobile-close" onclick="closeMenu()" aria-label="Cerrar menú">✕</button>
+  <a href="#historia" onclick="closeMenu()">Nosotros</a>
+  <a href="#platos" onclick="closeMenu()">Carta</a>
+  <a href="#galeria" onclick="closeMenu()">Galería</a>
+  <a href="#conciertos" onclick="closeMenu()">Eventos</a>
+  <a href="#contacto-cta" onclick="closeMenu()">Reservar</a>
+</div>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="hero" aria-label="Portada">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="assets/images/Hero.jpg"
+    aria-label="Chiringuito Salas junto a la playa"
+  >
+    <source src="assets/video/Hero_Salas_05_Mute.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <img
+      src="assets/images/Logo_Salas.png"
+      alt="Chiringuito Salas"
+      class="hero-logo"
+    >
+    <div class="hero-actions">
+      <a href="#platos" class="btn-primary">Ver la carta</a>
+      <a href="#contacto-cta" class="btn-outline-white">Llámanos</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Descubrir</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     HISTORIA
+══════════════════════════════════ -->
+<section id="historia" aria-label="Nuestra historia">
+  <div class="historia-inner">
+    <div class="reveal">
+      <div class="historia-img-wrap">
+        <img class="historia-img" src="assets/images/Francisco_Salas.jpg" alt="Francisco Salas, fundador del Chiringuito Salas" width="520" height="650" loading="lazy">
+        <div class="historia-img-badge">
+          <strong>30+</strong>
+          <span>años de historia</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="reveal">
+        <div class="historia-year" aria-hidden="true">1994</div>
+        <span class="section-label">Nuestra historia</span>
+        <h2 class="section-title">Más de tres décadas<br><em>frente al Mediterráneo</em></h2>
+      </div>
+      <div class="reveal rd1">
+        <p class="historia-text">Todo comenzó con Francisco Salas, que transformó un modesto puesto de helados en la playa Mar Rabiosa en el chiringuito que ves hoy. Junto al castillo de Terreros y el Pichirichi como telón de fondo, aquí el tiempo siempre ha pasado más despacio.</p>
+        <p class="historia-text">Producto local, producto fresco. Desde las gambas recién descargadas hasta el aceite de OleoAlmanzora. Sabores que no se improvisan — se heredan.</p>
+      </div>
+      <div class="reveal rd2">
+        <p class="historia-firma">Francisco Salas<span>Fundador</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PLATOS ESTRELLA
+══════════════════════════════════ -->
+<section id="platos" aria-label="Platos estrella">
+  <div class="platos-header">
+    <div class="reveal">
+      <span class="section-label">Lo que nos piden siempre</span>
+      <h2 class="section-title">Platos estrella</h2>
+    </div>
+    <button onclick="openCarta()" class="btn-outline-dark reveal rd1">Ver carta completa</button>
+  </div>
+  <div class="platos-grid">
+    <article class="plato-card reveal">
+      <img class="plato-img" src="assets/images/Pulpo.jpg" alt="Pata de pulpo a la plancha" width="800" height="450" loading="lazy">
+      <div class="plato-overlay">
+        <h3 class="plato-nombre">Pata de pulpo</h3>
+        <p class="plato-desc">A la plancha sobre puré de patata. Con pimentón ahumado y aceite de oliva virgen extra.</p>
+      </div>
+    </article>
+    <article class="plato-card reveal rd1">
+      <img class="plato-img" src="assets/images/Arroz_negro.jpg" alt="Arroz negro con sepia" width="400" height="400" loading="lazy">
+      <div class="plato-overlay">
+        <h3 class="plato-nombre">Arroz negro</h3>
+        <p class="plato-desc">Con sepia y alioli casero. El arroz que hace volver a todo el que pasa por aquí.</p>
+      </div>
+    </article>
+    <article class="plato-card reveal rd2">
+      <img class="plato-img" src="assets/images/Frutura.jpg" alt="Fritura de pescado y marisco" width="400" height="400" loading="lazy">
+      <div class="plato-overlay">
+        <h3 class="plato-nombre">Fritura Salas</h3>
+        <p class="plato-desc">Pescado y marisco del día, rebozado en el momento. Con limón de la huerta almeriense.</p>
+      </div>
+    </article>
+    <article class="plato-card reveal rd1">
+      <img class="plato-img" src="assets/images/Ceviche_de_corvina.jpg" alt="Ceviche de corvina" width="400" height="300" loading="lazy">
+      <div class="plato-overlay">
+        <h3 class="plato-nombre">Ceviche de corvina</h3>
+        <p class="plato-desc">Corvina marinada al momento con cítricos y chips crujientes.</p>
+      </div>
+    </article>
+    <article class="plato-card reveal rd2">
+      <img class="plato-img" src="assets/images/Taco_atun.jpg" alt="Taco de atún rojo" width="400" height="300" loading="lazy">
+      <div class="plato-overlay">
+        <h3 class="plato-nombre">Taco de atún</h3>
+        <p class="plato-desc">Atún rojo sobre pisto y verduras de temporada. Sésamo y microbrotes.</p>
+      </div>
+    </article>
+  </div>
+  <div class="platos-cta reveal">
+    <button onclick="openCarta()" class="btn-primary">Ver carta completa</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     STATS
+══════════════════════════════════ -->
+<section id="stats" aria-label="Datos del chiringuito">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="30" aria-label="Más de 30 años">0</div>
+      <div class="stat-label">Años junto al mar</div>
+    </div>
+    <div class="stat-item reveal rd1">
+      <div class="stat-num" aria-label="4.1 estrellas en Google">4.1<span aria-hidden="true" style="font-size:0.55em">★</span></div>
+      <div class="stat-label">Valoración en Google</div>
+    </div>
+    <div class="stat-item reveal rd2">
+      <div class="stat-num" data-target="116" aria-label="116 opiniones">0</div>
+      <div class="stat-label">Opiniones en Tripadvisor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GALERÍA — CAROUSEL MARQUEE
+══════════════════════════════════ -->
+<section id="galeria" aria-label="Galería del local">
+  <div class="galeria-header">
+    <div class="reveal">
+      <span class="section-label">El lugar</span>
+      <h2 class="section-title">Primera línea<br><em>de playa</em></h2>
+    </div>
+  </div>
+  <div class="marquee-section" aria-label="Galería del chiringuito">
+    <!-- Las imágenes se duplican para crear el loop infinito seamless -->
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- Set 1 -->
+      <div class="marquee-item">
+        <img src="assets/images/Salas_de_dia.jpg" alt="Chiringuito Salas de día" loading="lazy">
+      </div>
+      <div class="marquee-item">
+        <img src="assets/images/Decoracion_salas_muy_bonita.jpg" alt="Decoración interior con lámparas de mimbre" loading="lazy">
+      </div>
+      <div class="marquee-item">
+        <img src="assets/images/cerveza___patatas___jamon.jpg" alt="Cerveza fría con vistas a la playa" loading="lazy">
+      </div>
+      <div class="marquee-item">
+        <img src="assets/images/salas.jpg" alt="Interior del Chiringuito Salas por la noche" loading="lazy">
+      </div>
+      <div class="marquee-item">
+        <img src="assets/images/Salas_atardecer.jpg" alt="Chiringuito Salas al atardecer" loading="lazy">
+      </div>
+      <!-- Set 2 — copia exacta para loop seamless -->
+      <div class="marquee-item" aria-hidden="true">
+        <img src="assets/images/Salas_de_dia.jpg" alt="" loading="lazy">
+      </div>
+      <div class="marquee-item" aria-hidden="true">
+        <img src="assets/images/Decoracion_salas_muy_bonita.jpg" alt="" loading="lazy">
+      </div>
+      <div class="marquee-item" aria-hidden="true">
+        <img src="assets/images/cerveza___patatas___jamon.jpg" alt="" loading="lazy">
+      </div>
+      <div class="marquee-item" aria-hidden="true">
+        <img src="assets/images/salas.jpg" alt="" loading="lazy">
+      </div>
+      <div class="marquee-item" aria-hidden="true">
+        <img src="assets/images/Salas_atardecer.jpg" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CONCIERTOS — EVENT CALENDAR
+══════════════════════════════════ -->
+<section id="conciertos" aria-label="Conciertos y eventos de verano">
+  <div class="conciertos-inner">
+    <div class="conciertos-top">
+      <div class="conciertos-text">
+        <div class="reveal">
+          <div class="conciertos-badge"><span>Verano en Salas</span></div>
+          <span class="section-label" style="margin-top:16px">Música en vivo</span>
+          <h2 class="section-title">Noches de<br><em>concierto</em></h2>
+        </div>
+        <div class="reveal rd1">
+          <p>Cada verano, el Chiringuito Salas se convierte en el escenario de las mejores noches de la costa de Almería. Música en directo con el Mediterráneo de fondo — porque la buena comida merece una banda sonora a la altura.</p>
+          <a href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer" class="btn-primary">Ver más en Instagram</a>
+        </div>
+      </div>
+      <div class="reveal rd1" style="display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--teal);line-height:1;opacity:0.3">♪</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:rgba(254,252,248,0.6);font-style:italic;margin-top:8px">Cada fin de semana</div>
+          <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(254,252,248,0.3);margin-top:8px">Temporada alta · Julio – Agosto</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENT CALENDAR -->
+    <div class="reveal">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+        <span class="section-label" style="margin-bottom:0">Próximas fechas</span>
+        <span style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(254,252,248,0.35)">Verano 2025</span>
+      </div>
+      <div class="events-calendar">
+
+        <article class="event-card">
+          <div class="event-card-date">
+            <span class="event-card-day">27</span>
+            <span class="event-card-month">Jun</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-type">Rock &amp; Blues</div>
+            <div class="event-card-title">Los Hermanos del Delta</div>
+            <div class="event-card-time">Viernes · 21:30 h</div>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card-date" style="background:var(--coral)">
+            <span class="event-card-day">28</span>
+            <span class="event-card-month">Jun</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-type">Jazz &amp; Soul</div>
+            <div class="event-card-title">María Latorre Quartet</div>
+            <div class="event-card-time">Sábado · 21:30 h</div>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card-date">
+            <span class="event-card-day">4</span>
+            <span class="event-card-month">Jul</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-type">Flamenco</div>
+            <div class="event-card-title">Duende del Sur</div>
+            <div class="event-card-time">Viernes · 22:00 h</div>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card-date" style="background:var(--coral)">
+            <span class="event-card-day">5</span>
+            <span class="event-card-month">Jul</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-type">Pop &amp; Bossa Nova</div>
+            <div class="event-card-title">Selena &amp; The Wave</div>
+            <div class="event-card-time">Sábado · 21:30 h</div>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card-date">
+            <span class="event-card-day">11</span>
+            <span class="event-card-month">Jul</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-type">Acústico</div>
+            <div class="event-card-title">Rodrigo Vela Solo</div>
+            <div class="event-card-time">Viernes · 21:30 h</div>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card-date" style="background:var(--coral)">
+            <span class="event-card-day">12</span>
+            <span class="event-card-month">Jul</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-type">Rumba &amp; Fusion</div>
+            <div class="event-card-title">La Orquesta Terreros</div>
+            <div class="event-card-time">Sábado · 22:00 h</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     TESTIMONIOS
+══════════════════════════════════ -->
+<section id="testimonios" aria-label="Opiniones de clientes">
+  <div class="test-header">
+    <div class="reveal">
+      <span class="section-label">Lo que dicen</span>
+      <span class="test-stars" aria-label="5 estrellas">★★★★★</span>
+      <h2 class="section-title">Clientes que repiten</h2>
+    </div>
+  </div>
+  <div class="test-grid">
+    <article class="test-card reveal">
+      <span class="test-quote-mark" aria-hidden="true">"</span>
+      <blockquote class="test-quote">Un lugar super recomendable. Al lado de la playa. Todo riquísimo. Pedimos paella mixta y estaba muy buena y a buen precio. El trato del personal excelente, la música de fondo… en fin. Un lujo.</blockquote>
+      <div class="test-footer">
+        <div>
+          <div class="test-author">Sightsee14692467601</div>
+          <div class="test-platform">Tripadvisor · sep. 2025</div>
+        </div>
+        <div class="test-rating" aria-label="5 estrellas">★★★★★</div>
+      </div>
+    </article>
+    <article class="test-card reveal rd1">
+      <span class="test-quote-mark" aria-hidden="true">"</span>
+      <blockquote class="test-quote">Local muy recomendable con una terraza con vistas directas al Mar Mediterráneo. Amplia carta y servicio responsable. Plato recomendado: ¡el arroz meloso de pulpo es espectacular!</blockquote>
+      <div class="test-footer">
+        <div>
+          <div class="test-author">Mursharktapas</div>
+          <div class="test-platform">Tripadvisor · jul. 2025</div>
+        </div>
+        <div class="test-rating" aria-label="5 estrellas">★★★★★</div>
+      </div>
+    </article>
+    <article class="test-card reveal rd2">
+      <span class="test-quote-mark" aria-hidden="true">"</span>
+      <blockquote class="test-quote">Lugar frente al mar fantástico. La comida está bastante bien. Servicio bastante bueno y el personal muy simpático y amable. Lo recomendaría sin dudarlo a cualquiera que pase por Terreros.</blockquote>
+      <div class="test-footer">
+        <div>
+          <div class="test-author">Manuel R.</div>
+          <div class="test-platform">Tripadvisor · oct. 2025</div>
+        </div>
+        <div class="test-rating" aria-label="4 estrellas">★★★★☆</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CTA CONTACTO
+══════════════════════════════════ -->
+<section id="contacto-cta" aria-label="Contacto y reservas">
+  <div class="cta-inner">
+    <div class="reveal">
+      <span class="section-label">Ven a vernos</span>
+      <h2 class="cta-title">¿Hoy te vienes<br><em>al chiringuito?</em></h2>
+      <p class="cta-subtitle">Estamos en primera línea de playa en el Paseo Marítimo de San Juan de los Terreros. Reserva por teléfono o simplemente preséntate — siempre encontramos un hueco.</p>
+    </div>
+    <div class="reveal rd1">
+      <a href="tel:+34950466431" class="cta-phone">950 46 64 31</a>
+      <span class="cta-phone-label">Llámanos para reservar o consultar</span>
+      <div class="cta-actions">
+        <a href="tel:+34950466431" class="btn-primary">Llamar ahora</a>
+        <a href="https://wa.me/34950466431" target="_blank" rel="noopener noreferrer" class="btn-outline-dark">WhatsApp</a>
+      </div>
+    </div>
+    <div class="cta-info reveal rd2">
+      <div class="cta-info-item">
+        <strong>Ubicación</strong>
+        <span>Paseo Marítimo s/n<br>San Juan de los Terreros<br>04648 Almería</span>
+      </div>
+      <div class="cta-info-item">
+        <strong>Horario</strong>
+        <span>
+          Mié – Vie &nbsp;·&nbsp; 9:00 – 00:00<br>
+          Sáb – Dom &nbsp;·&nbsp; 9:00 – 00:00<br>
+          Lunes &nbsp;·&nbsp; 9:00 – 00:00<br>
+          <em style="color:var(--coral);font-style:normal;font-size:0.85em">Martes cerrado</em>
+        </span>
+      </div>
+      <div class="cta-info-item">
+        <strong>Síguenos</strong>
+        <span>Carta del día, eventos<br>y novedades en<br>nuestras redes sociales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     MAPA
+══════════════════════════════════ -->
+<iframe
+  id="mapa"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.8!2d-1.667224!3d37.358658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd908c7a2ec72c95%3A0xd1d1ea9f2ee4e65b!2sChiringuito%20Salas!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+  allowfullscreen
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="Ubicación del Chiringuito Salas"
+  aria-label="Mapa de localización del Chiringuito Salas en San Juan de los Terreros"
+></iframe>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-brand">Chiringuito Salas</span>
+      <span class="footer-brand-sub">San Juan de los Terreros · Almería</span>
+      <p class="footer-desc">Más de 30 años junto al Mediterráneo. Producto fresco, cocina de mercado y vistas al mar desde la primera línea de playa de Terreros.</p>
+      <nav class="footer-social" aria-label="Redes sociales">
+        <a href="https://www.facebook.com/ChiringuitoSalasTerreros/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+        <a href="https://www.threads.com/@chiringuitosalasterreros" target="_blank" rel="noopener noreferrer" aria-label="Threads">th</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h4>Navegar</h4>
+      <a href="#historia">Nosotros</a>
+      <a href="#platos">Platos estrella</a>
+      <a href="#galeria">Galería</a>
+      <a href="#conciertos">Eventos</a>
+      <a href="#contacto-cta">Contacto</a>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <div class="horario-row closed"><span>Martes</span><span>Cerrado</span></div>
+      <div class="horario-row"><span>Mié – Vie</span><span>9–00h</span></div>
+      <div class="horario-row weekend"><span>Sáb – Dom</span><span>9–00h</span></div>
+      <div class="horario-row"><span>Lunes</span><span>9–00h</span></div>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <span>Paseo Marítimo s/n</span>
+      <span>San Juan de los Terreros</span>
+      <span>04648 Almería</span>
+      <a href="tel:+34950466431" style="margin-top:10px">950 46 64 31</a>
+      <a href="https://wa.me/34950466431" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Chiringuito Salas · Todos los derechos reservados</p>
+    <nav class="footer-bottom-links" aria-label="Legal">
+      <a href="#">Aviso legal</a>
+      <a href="#">Política de privacidad</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

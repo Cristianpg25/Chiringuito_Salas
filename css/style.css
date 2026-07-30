@@ -1,0 +1,321 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#FEFCF8;
+  --sand:#F5EDE0;
+  --teal:#00A896;
+  --teal-dark:#007A6C;
+  --coral:#F4623A;
+  --coral-dark:#C44820;
+  --night:#162030;
+  --text:#162030;
+  --text-mid:#5A4A3A;
+  --text-light:#8A7A6A;
+  --text-white:#FEFCF8;
+  --text-muted:rgba(254,252,248,0.65);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'Montserrat',sans-serif;overflow-x:hidden}
+
+/* ── HEADER ── */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,backdrop-filter 0.4s,box-shadow 0.4s}
+header.scrolled{background:rgba(254,252,248,0.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,168,150,0.1)}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--text-white);letter-spacing:0.06em;text-decoration:none;line-height:1;transition:color 0.4s}
+.logo-text span{display:block;font-size:0.58rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(254,252,248,0.7);font-family:'Montserrat',sans-serif;font-weight:500;margin-top:3px;transition:color 0.4s}
+header.scrolled .logo-text{color:var(--text)}
+header.scrolled .logo-text span{color:var(--teal)}
+nav{display:flex;align-items:center;gap:28px}
+nav a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(254,252,248,0.9);text-decoration:none;transition:color 0.3s;font-weight:500}
+nav a:hover{color:var(--teal)}
+header.scrolled nav a{color:var(--text)}
+header.scrolled nav a:hover{color:var(--teal)}
+.nav-cta{background:var(--coral);color:var(--text-white)!important;padding:10px 22px;border-radius:3px;font-weight:600;font-size:10px;letter-spacing:0.15em;transition:background 0.3s,transform 0.2s!important}
+.nav-cta:hover{background:var(--coral-dark)!important;transform:translateY(-1px)}
+header.scrolled .nav-cta{color:var(--text-white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--text-white);transition:background 0.4s}
+header.scrolled .hamburger span{background:var(--text)}
+
+/* ── MOBILE MENU ── */
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(22,32,48,0.98);z-index:101;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--text-white);text-decoration:none;transition:color 0.3s}
+.mobile-nav a:hover{color:var(--teal)}
+.mobile-close{position:absolute;top:24px;right:5%;font-size:28px;color:rgba(254,252,248,0.6);cursor:pointer;background:none;border:none}
+
+/* ── HERO ── */
+#hero{height:100vh;min-height:580px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;background:var(--night) center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(22,32,48,0.35) 0%,rgba(22,32,48,0.15) 40%,rgba(22,32,48,0.72) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 20px;max-width:860px;display:flex;flex-direction:column;align-items:center;gap:40px}
+.hero-logo{width:clamp(200px,35vw,420px);opacity:0;animation:fadeUpIn 1s ease 0.4s forwards;filter:brightness(0) invert(1) drop-shadow(0 2px 24px rgba(0,0,0,0.4))}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUpIn 0.7s ease 1.2s forwards}
+.btn-primary{background:var(--coral);color:var(--text-white);padding:14px 32px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;border-radius:3px;transition:background 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px)}
+.btn-outline-white{border:1.5px solid rgba(254,252,248,0.5);color:var(--text-white);padding:13px 32px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;background:transparent;cursor:pointer;border-radius:3px;transition:border-color 0.3s,color 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
+.btn-outline-white:hover{border-color:var(--teal);color:#6EE7DF;transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s ease 1.4s forwards}
+.hero-scroll span{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(254,252,248,0.5)}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--teal),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.85s ease,transform 0.85s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:0.12s}.rd2{transition-delay:0.24s}.rd3{transition-delay:0.36s}
+
+/* ── SECTIONS ── */
+section{padding:96px 5%}
+.section-label{font-size:9px;letter-spacing:0.55em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:block;font-weight:600}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.08}
+.btn-outline-dark{border:1.5px solid rgba(22,32,48,0.25);color:var(--text);padding:12px 28px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;background:transparent;cursor:pointer;border-radius:3px;transition:border-color 0.3s,color 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
+.btn-outline-dark:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* ── HISTORIA ── */
+#historia{background:var(--white)}
+.historia-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.historia-img-wrap{position:relative}
+.historia-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
+.historia-img-badge{position:absolute;bottom:-20px;right:-20px;background:var(--teal);color:var(--text-white);padding:20px 24px;border-radius:3px;text-align:center}
+.historia-img-badge strong{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;display:block;line-height:1}
+.historia-img-badge span{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;opacity:0.85;margin-top:4px;display:block}
+.historia-year{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6rem);font-weight:300;color:var(--teal);opacity:0.12;line-height:1;margin-bottom:-16px}
+.historia-text{font-size:1rem;line-height:1.9;color:var(--text-mid);margin:20px 0;font-weight:300}
+.historia-firma{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--text);margin-top:8px}
+.historia-firma span{display:block;font-family:'Montserrat',sans-serif;font-style:normal;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--teal);margin-top:4px}
+
+/* ── PLATOS ── */
+#platos{background:var(--sand)}
+.platos-header{max-width:1100px;margin:0 auto 48px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+.platos-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.plato-card{position:relative;overflow:hidden;cursor:pointer;border-radius:2px}
+.plato-card:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
+.plato-card:nth-child(2){aspect-ratio:1/1}
+.plato-card:nth-child(3){aspect-ratio:1/1}
+.plato-card:nth-child(4){aspect-ratio:4/3}
+.plato-card:nth-child(5){aspect-ratio:4/3}
+.plato-img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;display:block}
+.plato-card:hover .plato-img{transform:scale(1.05)}
+.plato-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,32,48,0.88) 0%,rgba(22,32,48,0.05) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px 20px;transition:background 0.4s}
+.plato-card:hover .plato-overlay{background:linear-gradient(to top,rgba(22,32,48,0.95) 0%,rgba(22,32,48,0.2) 60%,transparent 100%)}
+.plato-nombre{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text-white);margin-bottom:4px}
+.plato-desc{font-size:11px;color:rgba(254,252,248,0.75);line-height:1.6;max-height:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.3s;opacity:0}
+.plato-card:hover .plato-desc{max-height:60px;opacity:1}
+.platos-cta{text-align:center;margin-top:40px}
+
+/* ── STATS ── */
+#stats{background:var(--teal);padding:56px 5%}
+.stats-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.stat-item{text-align:center;padding:16px 24px;border-right:1px solid rgba(254,252,248,0.2)}
+.stat-item:last-child{border:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:300;line-height:1;color:var(--text-white)}
+.stat-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(254,252,248,0.75);margin-top:8px;font-weight:500}
+
+/* ── GALERÍA — MARQUEE AUTO INFINITO ── */
+#galeria{background:var(--white);padding:96px 0 0}
+.galeria-header{max-width:1100px;margin:0 auto 48px;padding:0 5%}
+.marquee-section{width:100%;overflow:hidden;padding:0 0 80px;position:relative}
+.marquee-section::before,.marquee-section::after{
+  content:'';position:absolute;top:0;bottom:80px;width:120px;z-index:2;pointer-events:none;
+}
+.marquee-section::before{left:0;background:linear-gradient(to right,var(--white),transparent)}
+.marquee-section::after{right:0;background:linear-gradient(to left,var(--white),transparent)}
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation:marqueeScroll 28s linear infinite;
+  will-change:transform;
+}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{
+  flex:0 0 auto;
+  width:420px;
+  height:300px;
+  margin:0 8px;
+  border-radius:4px;
+  overflow:hidden;
+  position:relative;
+}
+.marquee-item img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.6s ease;
+}
+.marquee-item:hover img{transform:scale(1.04)}
+@keyframes marqueeScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+@media(max-width:768px){
+  .marquee-item{width:280px;height:200px;margin:0 6px}
+  .marquee-section::before,.marquee-section::after{width:60px}
+}
+
+/* ── CONCIERTOS ── */
+#conciertos{background:var(--night);padding:96px 5%}
+.conciertos-inner{max-width:1100px;margin:0 auto}
+.conciertos-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px}
+.conciertos-text .section-label{color:var(--teal)}
+.conciertos-text .section-title{color:var(--text-white)}
+.conciertos-text p{font-size:1rem;line-height:1.9;color:rgba(254,252,248,0.65);margin:20px 0 32px;font-weight:300}
+.conciertos-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,168,150,0.12);border:1px solid rgba(0,168,150,0.3);padding:10px 18px;border-radius:3px;margin-bottom:12px}
+.conciertos-badge span{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.conciertos-badge::before{content:'♪';color:var(--teal);font-size:14px}
+
+/* EVENT CALENDAR POSTER */
+.events-calendar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.event-card{
+  background:rgba(254,252,248,0.04);
+  border:1px solid rgba(254,252,248,0.1);
+  border-radius:4px;
+  overflow:hidden;
+  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+}
+.event-card:hover{transform:translateY(-4px);border-color:rgba(0,168,150,0.4);box-shadow:0 12px 40px rgba(0,168,150,0.1)}
+.event-card-date{
+  background:var(--teal);
+  padding:14px 16px;
+  display:flex;align-items:baseline;gap:8px;
+}
+.event-card-day{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:#fff;line-height:1}
+.event-card-month{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.8);font-weight:600}
+.event-card-body{padding:16px}
+.event-card-type{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px}
+.event-card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--text-white);line-height:1.2;margin-bottom:8px}
+.event-card-time{font-size:11px;color:rgba(254,252,248,0.45);display:flex;align-items:center;gap:6px}
+.event-card-time::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--coral);flex-shrink:0}
+
+/* ── TESTIMONIOS ── */
+#testimonios{background:var(--sand)}
+.test-header{max-width:1100px;margin:0 auto 48px}
+.test-stars{color:var(--coral);font-size:16px;letter-spacing:3px;margin-bottom:6px;display:block}
+.test-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.test-card{background:var(--white);border-radius:4px;padding:32px 26px;transition:transform 0.3s,box-shadow 0.3s}
+.test-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,168,150,0.1)}
+.test-quote-mark{font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--teal);opacity:0.2;line-height:0.8;margin-bottom:12px;display:block}
+.test-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;line-height:1.75;color:var(--text);margin-bottom:20px}
+.test-footer{display:flex;align-items:center;justify-content:space-between}
+.test-author{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.test-platform{font-size:10px;color:var(--text-light)}
+.test-rating{color:var(--coral);font-size:11px;letter-spacing:2px}
+
+/* ── CTA ── */
+#contacto-cta{background:var(--white);text-align:center}
+.cta-inner{max-width:680px;margin:0 auto}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5.5vw,4.8rem);font-weight:300;line-height:1.05;margin-bottom:14px;color:var(--text)}
+.cta-title em{font-style:italic;color:var(--teal)}
+.cta-subtitle{font-size:0.95rem;color:var(--text-mid);margin-bottom:44px;font-weight:300;line-height:1.8}
+.cta-phone{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;color:var(--text);text-decoration:none;display:block;margin-bottom:6px;transition:color 0.3s}
+.cta-phone:hover{color:var(--teal)}
+.cta-phone-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--text-light);margin-bottom:36px;display:block}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.cta-info{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(22,32,48,0.08)}
+.cta-info-item{padding:32px 20px;border-right:1px solid rgba(22,32,48,0.08);text-align:center}
+.cta-info-item:last-child{border:none}
+.cta-info-item strong{display:block;font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;font-weight:600}
+.cta-info-item span{font-size:0.9rem;color:var(--text-mid);line-height:1.7}
+
+/* ── MAPA ── */
+#mapa{width:100%;height:380px;border:none;display:block;filter:saturate(0.7)}
+
+/* ── FOOTER ── */
+footer{background:var(--night);padding:52px 5% 32px}
+.footer-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(254,252,248,0.07)}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--text-white);display:block;margin-bottom:8px}
+.footer-brand-sub{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:16px}
+.footer-desc{font-size:13px;color:rgba(254,252,248,0.45);line-height:1.8;max-width:260px}
+.footer-col h4{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;font-weight:600}
+.footer-col a{display:block;font-size:13px;color:rgba(254,252,248,0.55);text-decoration:none;margin-bottom:10px;transition:color 0.3s}
+.footer-col a:hover{color:var(--teal)}
+.footer-col span{display:block;font-size:13px;color:rgba(254,252,248,0.45);margin-bottom:8px;line-height:1.6}
+.footer-social{display:flex;gap:10px;margin-top:20px}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(254,252,248,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(254,252,248,0.5);text-decoration:none;font-size:12px;font-weight:600;transition:border-color 0.3s,color 0.3s,background 0.3s}
+.footer-social a:hover{border-color:var(--teal);color:var(--teal);background:rgba(0,168,150,0.08)}
+.footer-bottom{max-width:1100px;margin:24px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:11px;color:rgba(254,252,248,0.3)}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{font-size:11px;color:rgba(254,252,248,0.3);text-decoration:none;transition:color 0.3s}
+.footer-bottom-links a:hover{color:var(--teal)}
+.horario-row{display:flex;justify-content:space-between;font-size:12px;color:rgba(254,252,248,0.45);padding:4px 0;border-bottom:1px solid rgba(254,252,248,0.04)}
+.horario-row.closed{color:rgba(254,252,248,0.2)}
+.horario-row.weekend{color:rgba(0,168,150,0.9)}
+
+/* ── CARTA PAGE ── */
+#carta-page{
+  display:none;
+  position:fixed;inset:0;
+  background:var(--white);
+  z-index:200;
+  overflow-y:auto;
+}
+#carta-page.open{display:block}
+.carta-header{
+  position:sticky;top:0;
+  background:rgba(254,252,248,0.96);
+  backdrop-filter:blur(16px);
+  padding:16px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(22,32,48,0.08);
+  z-index:10;
+}
+.carta-header-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text)}
+.carta-close{background:none;border:1.5px solid rgba(22,32,48,0.2);border-radius:3px;padding:8px 20px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);cursor:pointer;transition:border-color 0.3s,color 0.3s;font-family:'Montserrat',sans-serif;font-weight:500}
+.carta-close:hover{border-color:var(--coral);color:var(--coral)}
+.carta-scroll-container{padding:48px 5% 80px;max-width:900px;margin:0 auto}
+.carta-page-img{
+  width:100%;
+  display:block;
+  margin-bottom:12px;
+  border-radius:4px;
+  box-shadow:0 4px 24px rgba(22,32,48,0.08);
+}
+.carta-scroll-hint{text-align:center;padding:24px 0 0;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-light)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUpIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .events-calendar{grid-template-columns:repeat(2,1fr)}
+  .conciertos-top{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:900px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .historia-inner{grid-template-columns:1fr;gap:48px}
+  .historia-img-badge{right:0;bottom:-16px}
+  .platos-grid{grid-template-columns:1fr 1fr}
+  .plato-card:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
+  .plato-card:nth-child(2),.plato-card:nth-child(3),.plato-card:nth-child(4),.plato-card:nth-child(5){aspect-ratio:1/1}
+  .test-grid{grid-template-columns:1fr;gap:16px}
+  .cta-info{grid-template-columns:1fr}
+  .cta-info-item{border-right:none;border-bottom:1px solid rgba(22,32,48,0.08)}
+  .cta-info-item:last-child{border:none}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  section{padding:72px 5%}
+  #conciertos{padding:72px 5%}
+  #galeria{padding:72px 0 0}
+}
+@media(max-width:600px){
+  .platos-grid{grid-template-columns:1fr}
+  .plato-card:nth-child(n){grid-column:span 1;aspect-ratio:4/3}
+  .stats-inner{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(254,252,248,0.15);padding:20px}
+  .stat-item:last-child{border:none}
+  .platos-header{flex-direction:column;align-items:flex-start}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .events-calendar{grid-template-columns:1fr}
+
+}
+@media(max-width:375px){
+  .hero-actions,.cta-actions{flex-direction:column;align-items:center}
+}
+
+/* ── SMALL FIXES: viewport units on mobile browsers, touch targets ── */
+@supports(height:100dvh){
+  #hero{height:100dvh}
+}
+img{max-width:100%}
+iframe#mapa{max-width:100%}
