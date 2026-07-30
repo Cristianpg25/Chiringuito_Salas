@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chiringuito Salas — San Juan de los Terreros</title>
 <meta name="description" content="Chiringuito Salas — Más de 30 años junto al Mediterráneo en primera línea de playa. San Juan de los Terreros, Almería.">
+<meta name="theme-color" content="#D9CCBC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,32 +32,33 @@
 </div>
 
 <!-- ══════════════════════════════════
-     HEADER
+     HEADER — píldora flotante
 ══════════════════════════════════ -->
 <header id="header">
-  <a href="#hero" class="logo-text" aria-label="Chiringuito Salas — inicio">
-    Salas
-    <span>Chiringuito</span>
-  </a>
-  <nav role="navigation" aria-label="Navegación principal">
-    <a href="#historia">Nosotros</a>
-    <a href="#platos">Carta</a>
-    <a href="#galeria">Galería</a>
-    <a href="#conciertos">Eventos</a>
-    <a href="#contacto-cta" class="nav-cta">Reservar</a>
-  </nav>
-  <button class="hamburger" id="hamburger" onclick="openMenu()" aria-label="Abrir menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="header-pill">
+    <a href="#hero" class="header-icon" aria-label="Chiringuito Salas — inicio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="4.2"></circle><path d="M12 2v2.4M4.2 6.2l1.7 1.7M19.8 6.2l-1.7 1.7M2 14h2.4M19.6 14H22"></path></svg>
+    </a>
+    <span class="header-divider" aria-hidden="true"></span>
+    <a href="#" class="header-link" onclick="openCarta();return false;">Carta</a>
+    <span class="header-divider" aria-hidden="true"></span>
+    <a href="#contacto-cta" class="header-link">Reservar</a>
+    <span class="header-divider" aria-hidden="true"></span>
+    <button class="header-hamburger" id="hamburger" onclick="openMenu()" aria-label="Abrir menú" aria-expanded="false">
+      <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+    </button>
+  </div>
 </header>
 
-<!-- MOBILE MENU -->
+<!-- MENÚ -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Menú" aria-modal="true">
   <button class="mobile-close" onclick="closeMenu()" aria-label="Cerrar menú">✕</button>
-  <a href="#historia" onclick="closeMenu()">Nosotros</a>
-  <a href="#platos" onclick="closeMenu()">Carta</a>
-  <a href="#galeria" onclick="closeMenu()">Galería</a>
-  <a href="#conciertos" onclick="closeMenu()">Eventos</a>
+  <a href="#intro" onclick="closeMenu()">Nosotros</a>
+  <a href="#" onclick="closeMenu();openCarta()">Carta</a>
+  <a href="#platos" onclick="closeMenu()">Platos estrella</a>
+  <a href="#sounds" onclick="closeMenu()">Conciertos</a>
+  <a href="#oasis" onclick="closeMenu()">El local</a>
   <a href="#contacto-cta" onclick="closeMenu()">Reservar</a>
 </div>
 
@@ -84,20 +86,25 @@
       class="hero-logo"
     >
     <div class="hero-actions">
-      <a href="#platos" class="btn-primary">Ver la carta</a>
+      <a href="#" onclick="openCarta();return false;" class="btn-primary">Ver la carta</a>
       <a href="#contacto-cta" class="btn-outline-white">Llámanos</a>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════
-     INTRO
+     INTRO — patrón "Mediterranean Restaurant & Beach House"
 ══════════════════════════════════ -->
 <section id="intro" aria-label="Presentación">
-  <div class="intro-inner reveal">
-    <h2 class="intro-title">Chiringuito en primera línea de playa en San Juan de los Terreros</h2>
-    <p class="intro-subtitle">Arroces, pescado fresco y coctelería con vistas al Mediterráneo</p>
-    <p class="intro-text">Bienvenido a <strong>Chiringuito Salas</strong>, un clásico en primera línea de playa de <strong>San Juan de los Terreros, Almería</strong>, desde 1994. Nuestra terraza frente al mar respira el espíritu despreocupado del Mediterráneo: producto local y fresco, arroces de cuchara y el castillo de Terreros como telón de fondo. Ven a comer sin prisas — arroces y pescado del día, ensaladas frescas y buena coctelería, todo con las mejores vistas de la costa.</p>
+  <div class="intro-grid">
+    <div class="intro-media reveal">
+      <img src="assets/images/Salas_de_dia.jpg" alt="Terraza de Chiringuito Salas en primera línea de playa" loading="lazy">
+    </div>
+    <div class="reveal rd1">
+      <h2 class="intro-title">Restaurante Mediterráneo &amp; Chiringuito en San Juan de los Terreros</h2>
+      <p class="intro-subtitle">Arroces, pescado fresco y coctelería con vistas al mar</p>
+      <p class="intro-text">Bienvenido a <strong>Chiringuito Salas</strong>, un clásico en primera línea de playa de <strong>San Juan de los Terreros, Almería</strong>, desde 1994. Nuestra terraza frente al mar respira el espíritu despreocupado del Mediterráneo, con el castillo de Terreros y el Pichirichi como telón de fondo. Ven a comer sin prisas — arroces de cuchara, pescado del día, ensaladas frescas y buena coctelería, todo con las mejores vistas de la costa.</p>
+    </div>
   </div>
 </section>
 
@@ -133,52 +140,65 @@
 </section>
 
 <!-- ══════════════════════════════════
-     PLATOS ESTRELLA
+     EAT & DRINK — adaptado con producto fresco
+══════════════════════════════════ -->
+<section id="eat-drink" aria-label="Producto fresco">
+  <div class="eatdrink-grid">
+    <div class="eatdrink-text reveal">
+      <span class="section-label">Producto fresco</span>
+      <h2 class="eatdrink-title">Producto de mercado y pescado del día en Chiringuito Salas</h2>
+      <p><strong>El sabor del Mediterráneo, sin atajos.</strong> En Chiringuito Salas seleccionamos cada día lo mejor de la lonja y de la huerta almeriense: pescado y marisco fresco, gambas recién descargadas y verduras de temporada, todo a la vista en nuestra vitrina.</p>
+      <p>De ahí nacen nuestros platos estrella — desde el <strong>arroz negro con sepia</strong> y la <strong>pata de pulpo a la plancha</strong>, hasta la <strong>fritura Salas</strong> del día. Producto fresco, cocina honesta y el Mediterráneo siempre de fondo.</p>
+    </div>
+    <div class="eatdrink-media reveal rd1">
+      <img src="assets/images/cerveza___patatas___jamon.jpg" alt="Vitrina de producto fresco en Chiringuito Salas" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     TOGGLE DÍA / NOCHE
+══════════════════════════════════ -->
+<section id="modo-banner" aria-label="Ambiente día y noche">
+  <div class="modo-banner">
+    <button class="modo-block day" id="modoBtnDay" aria-pressed="true" onclick="setMode('day')">
+      <span>Disfruta de <strong>día</strong></span>
+    </button>
+    <button class="modo-block night" id="modoBtnNight" aria-pressed="false" onclick="setMode('night')">
+      <span>Vive la <strong>noche</strong></span>
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PLATOS ESTRELLA — grid vertical
 ══════════════════════════════════ -->
 <section id="platos" aria-label="Platos estrella">
-  <div class="platos-header">
-    <div class="reveal">
-      <span class="section-label">Lo que nos piden siempre</span>
-      <h2 class="section-title">Platos estrella</h2>
-    </div>
-    <button onclick="openCarta()" class="btn-outline-dark reveal rd1">Ver carta completa</button>
+  <div class="platos-header reveal">
+    <span class="section-label">Lo que nos piden siempre</span>
+    <h2 class="section-title">Platos estrella</h2>
   </div>
   <div class="platos-grid">
-    <article class="plato-card reveal">
-      <img class="plato-img" src="assets/images/Pulpo.jpg" alt="Pata de pulpo a la plancha" width="1536" height="2048" loading="lazy">
-      <div class="plato-overlay">
-        <h3 class="plato-nombre">Pata de pulpo</h3>
-        <p class="plato-desc">A la plancha sobre puré de patata. Con pimentón ahumado y aceite de oliva virgen extra.</p>
-      </div>
-    </article>
-    <article class="plato-card reveal rd1">
-      <img class="plato-img" src="assets/images/Arroz_negro.jpg" alt="Arroz negro con sepia" width="1080" height="1080" loading="lazy">
-      <div class="plato-overlay">
-        <h3 class="plato-nombre">Arroz negro</h3>
-        <p class="plato-desc">Con sepia y alioli casero. El arroz que hace volver a todo el que pasa por aquí.</p>
-      </div>
-    </article>
-    <article class="plato-card reveal rd2">
-      <img class="plato-img" src="assets/images/Frutura.jpg" alt="Fritura de pescado y marisco" width="1536" height="2048" loading="lazy">
-      <div class="plato-overlay">
-        <h3 class="plato-nombre">Fritura Salas</h3>
-        <p class="plato-desc">Pescado y marisco del día, rebozado en el momento. Con limón de la huerta almeriense.</p>
-      </div>
-    </article>
-    <article class="plato-card reveal rd1">
-      <img class="plato-img" src="assets/images/Ceviche_de_corvina.jpg" alt="Ceviche de corvina" width="1440" height="1080" loading="lazy">
-      <div class="plato-overlay">
-        <h3 class="plato-nombre">Ceviche de corvina</h3>
-        <p class="plato-desc">Corvina marinada al momento con cítricos y chips crujientes.</p>
-      </div>
-    </article>
-    <article class="plato-card reveal rd2">
-      <img class="plato-img" src="assets/images/Taco_atun.jpg" alt="Taco de atún rojo" width="1440" height="1800" loading="lazy">
-      <div class="plato-overlay">
-        <h3 class="plato-nombre">Taco de atún</h3>
-        <p class="plato-desc">Atún rojo sobre pisto y verduras de temporada. Sésamo y microbrotes.</p>
-      </div>
-    </article>
+    <a class="plato-item reveal" href="#" onclick="openCarta();return false;">
+      <img src="assets/images/Pulpo.jpg" alt="Pata de pulpo a la plancha" loading="lazy">
+      <span>Pata de pulpo</span>
+    </a>
+    <a class="plato-item reveal rd1" href="#" onclick="openCarta();return false;">
+      <img src="assets/images/Arroz_negro.jpg" alt="Arroz negro con sepia" loading="lazy">
+      <span>Arroz negro</span>
+    </a>
+    <a class="plato-item reveal rd2" href="#" onclick="openCarta();return false;">
+      <img src="assets/images/Frutura.jpg" alt="Fritura de pescado y marisco" loading="lazy">
+      <span>Fritura Salas</span>
+    </a>
+    <a class="plato-item reveal" href="#" onclick="openCarta();return false;">
+      <img src="assets/images/Ceviche_de_corvina.jpg" alt="Ceviche de corvina" loading="lazy">
+      <span>Ceviche de corvina</span>
+    </a>
+    <a class="plato-item reveal rd1" href="#" onclick="openCarta();return false;">
+      <img src="assets/images/Taco_atun.jpg" alt="Taco de atún rojo" loading="lazy">
+      <span>Taco de atún</span>
+    </a>
   </div>
   <div class="platos-cta reveal">
     <button onclick="openCarta()" class="btn-primary">Ver carta completa</button>
@@ -186,132 +206,99 @@
 </section>
 
 <!-- ══════════════════════════════════
-     GALERÍA
+     SOUNDS OF SALAS — conciertos
 ══════════════════════════════════ -->
-<section id="galeria" aria-label="Galería del local">
-  <div class="galeria-header">
-    <div class="reveal">
-      <span class="section-label">El lugar</span>
-      <h2 class="section-title">Primera línea<br><em>de playa</em></h2>
+<section id="sounds" aria-label="Sounds of Salas — próximos conciertos">
+  <div class="sounds-heading reveal">
+    <span class="section-label">Música en vivo</span>
+    <h2 class="section-title">Sounds of <em>Salas</em></h2>
+    <hr class="sounds-divider" aria-hidden="true">
+  </div>
+
+  <div class="sounds-card reveal">
+    <div class="sounds-surface">
+      <div class="sounds-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="6" cy="18" r="3" fill="currentColor"></circle><circle cx="18" cy="16" r="3" fill="currentColor"></circle></svg>
+      </div>
+      <div class="sounds-meta">
+        <div class="sounds-title" id="soundsTitle">Los Hermanos del Delta</div>
+        <div class="sounds-sub" id="soundsSub">Viernes 27 Jun · 21:30 h · Rock &amp; Blues</div>
+      </div>
+      <a class="sounds-link" href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer" aria-label="Ver conciertos en Instagram">
+        <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+      </a>
     </div>
-  </div>
-  <div class="galeria-grid">
-    <a class="galeria-item reveal" href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/Salas_de_dia.jpg" alt="Chiringuito Salas de día" loading="lazy">
-    </a>
-    <a class="galeria-item reveal rd1" href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/Decoracion_salas_muy_bonita.jpg" alt="Decoración interior con lámparas de mimbre" loading="lazy">
-    </a>
-    <a class="galeria-item reveal rd2" href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/cerveza___patatas___jamon.jpg" alt="Cerveza fría con vistas a la playa" loading="lazy">
-    </a>
-    <a class="galeria-item reveal" href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/salas.jpg" alt="Interior del Chiringuito Salas por la noche" loading="lazy">
-    </a>
-    <a class="galeria-item reveal rd1" href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/Salas_atardecer.jpg" alt="Chiringuito Salas al atardecer" loading="lazy">
-    </a>
-  </div>
-  <div class="galeria-cta reveal">
-    <a href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer" class="btn-outline-dark">Ver galería en Instagram</a>
+
+    <hr class="sounds-info-bar" aria-hidden="true">
+
+    <div class="sounds-controls">
+      <div class="sounds-controls-left">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"></path></svg>
+        Verano 2025 · cada fin de semana
+      </div>
+      <div class="sounds-controls-right">
+        <button class="sounds-btn" id="soundsPrev" aria-label="Concierto anterior">
+          <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6V6z"></path></svg>
+        </button>
+        <button class="sounds-btn" id="soundsNext" aria-label="Siguiente concierto">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6V6z"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <ul class="sounds-list" id="soundsList">
+      <li class="is-active" data-name="Los Hermanos del Delta" data-when="Viernes 27 Jun · 21:30 h · Rock &amp; Blues">
+        <span class="sounds-list-date">27 Jun · Vie</span>
+        <span class="sounds-list-name">Los Hermanos del Delta</span>
+        <span class="sounds-list-type">Rock &amp; Blues</span>
+      </li>
+      <li data-name="María Latorre Quartet" data-when="Sábado 28 Jun · 21:30 h · Jazz &amp; Soul">
+        <span class="sounds-list-date">28 Jun · Sáb</span>
+        <span class="sounds-list-name">María Latorre Quartet</span>
+        <span class="sounds-list-type">Jazz &amp; Soul</span>
+      </li>
+      <li data-name="Duende del Sur" data-when="Viernes 4 Jul · 22:00 h · Flamenco">
+        <span class="sounds-list-date">4 Jul · Vie</span>
+        <span class="sounds-list-name">Duende del Sur</span>
+        <span class="sounds-list-type">Flamenco</span>
+      </li>
+      <li data-name="Selena &amp; The Wave" data-when="Sábado 5 Jul · 21:30 h · Pop &amp; Bossa Nova">
+        <span class="sounds-list-date">5 Jul · Sáb</span>
+        <span class="sounds-list-name">Selena &amp; The Wave</span>
+        <span class="sounds-list-type">Pop &amp; Bossa Nova</span>
+      </li>
+      <li data-name="Rodrigo Vela Solo" data-when="Viernes 11 Jul · 21:30 h · Acústico">
+        <span class="sounds-list-date">11 Jul · Vie</span>
+        <span class="sounds-list-name">Rodrigo Vela Solo</span>
+        <span class="sounds-list-type">Acústico</span>
+      </li>
+      <li data-name="La Orquesta Terreros" data-when="Sábado 12 Jul · 22:00 h · Rumba &amp; Fusión">
+        <span class="sounds-list-date">12 Jul · Sáb</span>
+        <span class="sounds-list-name">La Orquesta Terreros</span>
+        <span class="sounds-list-type">Rumba &amp; Fusión</span>
+      </li>
+    </ul>
   </div>
 </section>
 
 <!-- ══════════════════════════════════
-     CONCIERTOS — EVENT CALENDAR
+     OASIS — fotos del local, carrusel día/noche
 ══════════════════════════════════ -->
-<section id="conciertos" aria-label="Conciertos y eventos de verano">
-  <div class="conciertos-inner">
-    <div class="conciertos-heading reveal">
-      <div class="conciertos-badge"><span>Verano en Salas</span></div>
-      <span class="section-label">Música en vivo</span>
-      <h2 class="section-title">Sonidos de <em>Salas</em></h2>
-      <hr class="conciertos-divider" aria-hidden="true">
-      <p class="conciertos-intro">Cada verano, el Chiringuito Salas se convierte en el escenario de las mejores noches de la costa de Almería. Música en directo con el Mediterráneo de fondo, cada fin de semana en temporada alta — porque la buena comida merece una banda sonora a la altura.</p>
-      <a href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer" class="btn-primary">Ver más en Instagram</a>
+<section id="oasis" aria-label="El local">
+  <div class="oasis-grid">
+    <div class="oasis-text reveal">
+      <span class="oasis-subtitle">El lugar</span>
+      <h2 class="oasis-title">Primera línea de playa</h2>
+      <p>Terraza frente al Mediterráneo con el castillo de Terreros y el Pichirichi de fondo. De día, mesas a pie de arena y sombra de cañizo; al caer el sol, luces cálidas, buena música y coctelería para alargar la noche.</p>
+      <p>Un espacio pensado para comer sin prisa, tomar algo con los pies casi en la arena y quedarte a ver el atardecer.</p>
+      <a href="#contacto-cta" class="btn-outline-dark">Reservar mesa</a>
     </div>
-
-    <!-- EVENT CALENDAR -->
-    <div class="reveal">
-      <div class="conciertos-subhead">
-        <span class="section-label" style="margin-bottom:0">Próximas fechas</span>
-        <span>Verano 2025</span>
-      </div>
-      <div class="events-calendar">
-
-        <article class="event-card">
-          <div class="event-card-date">
-            <span class="event-card-day">27</span>
-            <span class="event-card-month">Jun</span>
-          </div>
-          <div class="event-card-body">
-            <div class="event-card-type">Rock &amp; Blues</div>
-            <div class="event-card-title">Los Hermanos del Delta</div>
-            <div class="event-card-time">Viernes · 21:30 h</div>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="event-card-date" style="background:var(--coral)">
-            <span class="event-card-day">28</span>
-            <span class="event-card-month">Jun</span>
-          </div>
-          <div class="event-card-body">
-            <div class="event-card-type">Jazz &amp; Soul</div>
-            <div class="event-card-title">María Latorre Quartet</div>
-            <div class="event-card-time">Sábado · 21:30 h</div>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="event-card-date">
-            <span class="event-card-day">4</span>
-            <span class="event-card-month">Jul</span>
-          </div>
-          <div class="event-card-body">
-            <div class="event-card-type">Flamenco</div>
-            <div class="event-card-title">Duende del Sur</div>
-            <div class="event-card-time">Viernes · 22:00 h</div>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="event-card-date" style="background:var(--coral)">
-            <span class="event-card-day">5</span>
-            <span class="event-card-month">Jul</span>
-          </div>
-          <div class="event-card-body">
-            <div class="event-card-type">Pop &amp; Bossa Nova</div>
-            <div class="event-card-title">Selena &amp; The Wave</div>
-            <div class="event-card-time">Sábado · 21:30 h</div>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="event-card-date">
-            <span class="event-card-day">11</span>
-            <span class="event-card-month">Jul</span>
-          </div>
-          <div class="event-card-body">
-            <div class="event-card-type">Acústico</div>
-            <div class="event-card-title">Rodrigo Vela Solo</div>
-            <div class="event-card-time">Viernes · 21:30 h</div>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="event-card-date" style="background:var(--coral)">
-            <span class="event-card-day">12</span>
-            <span class="event-card-month">Jul</span>
-          </div>
-          <div class="event-card-body">
-            <div class="event-card-type">Rumba &amp; Fusion</div>
-            <div class="event-card-title">La Orquesta Terreros</div>
-            <div class="event-card-time">Sábado · 22:00 h</div>
-          </div>
-        </article>
-
-      </div>
+    <div class="oasis-slideshow reveal rd1" id="oasisSlideshow">
+      <div class="oasis-slide active" data-mode="day"><img src="assets/images/Salas_de_dia.jpg" alt="Terraza de Chiringuito Salas de día" loading="lazy"></div>
+      <div class="oasis-slide" data-mode="day"><img src="assets/images/Decoracion_salas_muy_bonita.jpg" alt="Interior de Chiringuito Salas con lámparas de mimbre" loading="lazy"></div>
+      <div class="oasis-slide" data-mode="day"><img src="assets/images/cerveza___patatas___jamon.jpg" alt="Cerveza fría con vistas a la playa" loading="lazy"></div>
+      <div class="oasis-slide" data-mode="night"><img src="assets/images/salas.jpg" alt="Chiringuito Salas de noche" loading="lazy"></div>
+      <div class="oasis-slide" data-mode="night"><img src="assets/images/Salas_atardecer.jpg" alt="Chiringuito Salas al atardecer" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -394,7 +381,7 @@
           Mié – Vie &nbsp;·&nbsp; 9:00 – 00:00<br>
           Sáb – Dom &nbsp;·&nbsp; 9:00 – 00:00<br>
           Lunes &nbsp;·&nbsp; 9:00 – 00:00<br>
-          <em style="color:var(--coral);font-style:normal;font-size:0.85em">Martes cerrado</em>
+          <em style="color:var(--accent);font-style:normal;font-size:0.85em">Martes cerrado</em>
         </span>
       </div>
       <div class="cta-info-item">
@@ -406,17 +393,21 @@
 </section>
 
 <!-- ══════════════════════════════════
-     MAPA
+     MAPA — tarjeta contenida
 ══════════════════════════════════ -->
-<iframe
-  id="mapa"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.8!2d-1.667224!3d37.358658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd908c7a2ec72c95%3A0xd1d1ea9f2ee4e65b!2sChiringuito%20Salas!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  title="Ubicación del Chiringuito Salas"
-  aria-label="Mapa de localización del Chiringuito Salas en San Juan de los Terreros"
-></iframe>
+<section id="ubicacion" aria-label="Cómo llegar">
+  <div class="mapa-card reveal">
+    <iframe
+      id="mapa"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.8!2d-1.667224!3d37.358658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd908c7a2ec72c95%3A0xd1d1ea9f2ee4e65b!2sChiringuito%20Salas!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Ubicación del Chiringuito Salas"
+      aria-label="Mapa de localización del Chiringuito Salas en San Juan de los Terreros"
+    ></iframe>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════
      STATS
@@ -455,10 +446,10 @@
     </div>
     <div class="footer-col">
       <h4>Navegar</h4>
-      <a href="#historia">Nosotros</a>
+      <a href="#intro">Nosotros</a>
       <a href="#platos">Platos estrella</a>
-      <a href="#galeria">Galería</a>
-      <a href="#conciertos">Eventos</a>
+      <a href="#sounds">Conciertos</a>
+      <a href="#oasis">El local</a>
       <a href="#contacto-cta">Contacto</a>
     </div>
     <div class="footer-col">
@@ -485,6 +476,21 @@
     </nav>
   </div>
 </footer>
+
+<!-- ══════════════════════════════════
+     TOGGLE DÍA/NOCHE — píldora fija
+══════════════════════════════════ -->
+<div id="daynight-toggle">
+  <div class="daynight-pill">
+    <span>Día</span>
+    <button class="daynight-switch" id="daynightSwitch" aria-pressed="false" aria-label="Cambiar a modo noche" onclick="toggleDayNightSwitch()">
+      <span class="daynight-ball" aria-hidden="true">
+        <svg id="daynightIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle></svg>
+      </span>
+    </button>
+    <span>Noche</span>
+  </div>
+</div>
 
 <script src="js/script.js"></script>
 </body>
