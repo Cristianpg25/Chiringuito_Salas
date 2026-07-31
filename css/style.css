@@ -15,8 +15,18 @@
   --coral-dark:#8f6338;
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--text);font-family:'Montserrat',sans-serif;overflow-x:hidden}
+body{background:var(--cream);color:var(--text);font-family:'Montserrat',sans-serif;overflow-x:hidden;transition:background-color 0.6s ease,color 0.6s ease}
+section,footer{transition:background-color 0.6s ease,color 0.6s ease}
 img{max-width:100%}
+
+/* ── MODO NOCHE — el fondo de toda la web se oscurece con el toggle ── */
+body.mode-night{
+  --cream:#2E211C;
+  --cream-light:#382A24;
+  --white:#241A16;
+  --text:#F1E6DA;
+  --text-muted:rgba(241,230,218,0.65);
+}
 
 /* ── HEADER — floating pill, siempre igual, sin cambios al hacer scroll ── */
 #header{position:fixed;top:18px;left:0;right:0;z-index:100;display:flex;justify-content:center;pointer-events:none;padding:0 16px}
@@ -66,8 +76,8 @@ section{padding:96px 5%}
 
 /* ── INTRO (patrón "Mediterranean Restaurant & Beach House") ── */
 #intro{background:var(--white)}
-.intro-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.intro-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}
+.intro-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
+.intro-media img{width:100%;aspect-ratio:5/4.4;object-fit:cover;border-radius:10px;display:block}
 .intro-title{font-family:'Lora',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;line-height:1.3;margin-bottom:14px}
 .intro-subtitle{font-family:'Lora',serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--accent);margin-bottom:20px}
 .intro-text{font-size:0.95rem;line-height:1.9;color:var(--text-muted);font-weight:300}
@@ -87,8 +97,8 @@ section{padding:96px 5%}
 
 /* ── EAT & DRINK (producto fresco) ── */
 #eat-drink{background:var(--white)}
-.eatdrink-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.eatdrink-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}
+.eatdrink-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center}
+.eatdrink-media img{width:100%;aspect-ratio:5/4.4;object-fit:cover;border-radius:10px;display:block}
 .eatdrink-text .section-label{margin-bottom:10px}
 .eatdrink-title{font-family:'Lora',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;line-height:1.3;margin-bottom:18px}
 .eatdrink-text p{font-size:0.95rem;line-height:1.9;color:var(--text-muted);font-weight:300;margin-bottom:14px}
@@ -97,17 +107,22 @@ section{padding:96px 5%}
 /* ── TOGGLE DÍA / NOCHE (banner) ── */
 #modo-banner{padding:0}
 .modo-banner{display:grid;grid-template-columns:1fr 1fr}
-.modo-block{border:none;cursor:pointer;padding:56px 5%;text-align:center;font-family:'Lora',serif;font-size:clamp(1.3rem,2.6vw,1.9rem);font-style:italic;transition:filter 0.3s;position:relative}
-.modo-block strong{font-style:normal;font-weight:600}
-.modo-block.day{background:var(--cream-light);color:var(--text)}
-.modo-block.night{background:var(--dark);color:var(--text-cream)}
-.modo-block[aria-pressed="true"]{filter:brightness(1.06)}
-.modo-block[aria-pressed="true"]::after{content:'';position:absolute;bottom:16px;left:50%;transform:translateX(-50%);width:36px;height:2px;background:currentColor;opacity:0.6}
+.modo-block{border:none;cursor:pointer;padding:56px 5%;display:flex;align-items:center;justify-content:center;transition:filter 0.3s}
+.modo-block.day{background:var(--cream-light)}
+.modo-block.night{background:var(--dark)}
+.modo-block[aria-pressed="true"]{filter:brightness(1.05)}
+.modo-pill{display:inline-flex;align-items:center;gap:10px;border-radius:50px;padding:16px 38px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;border:1.5px solid currentColor;transition:background 0.3s,color 0.3s,transform 0.2s}
+.modo-pill em{font-style:italic;font-family:'Lora',serif;font-size:1.05em;letter-spacing:0}
+.modo-block.day .modo-pill{color:var(--text)}
+.modo-block.night .modo-pill{color:var(--text-cream)}
+.modo-block:hover .modo-pill{transform:translateY(-2px)}
+.modo-block.day:hover .modo-pill,.modo-block.day[aria-pressed="true"] .modo-pill{background:var(--text);color:var(--cream-light)}
+.modo-block.night:hover .modo-pill,.modo-block.night[aria-pressed="true"] .modo-pill{background:var(--text-cream);color:var(--dark)}
 
 /* ── PLATOS ESTRELLA — grid vertical ── */
 #platos{background:var(--cream-light)}
-.platos-header{max-width:1160px;margin:0 auto 40px;text-align:center}
-.platos-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.platos-header{max-width:1280px;margin:0 auto 40px;text-align:center}
+.platos-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .plato-item{aspect-ratio:9/16;overflow:hidden;border-radius:8px;position:relative;display:block}
 .plato-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
 .plato-item:hover img{transform:scale(1.05)}
@@ -150,11 +165,11 @@ section{padding:96px 5%}
 
 /* ── OASIS — carrusel con toggle día / noche ── */
 #oasis{background:var(--white)}
-.oasis-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+.oasis-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:0.8fr 1.3fr;gap:56px;align-items:center}
 .oasis-title{font-family:'Lora',serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:500;margin-bottom:6px}
 .oasis-subtitle{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:block}
 .oasis-text p{font-size:0.95rem;line-height:1.9;color:var(--text-muted);font-weight:300;margin-bottom:16px}
-.oasis-slideshow{position:relative;aspect-ratio:4/3.2;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(46,32,28,0.2)}
+.oasis-slideshow{position:relative;aspect-ratio:16/11;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(46,32,28,0.2)}
 .oasis-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
 .oasis-slide.active{opacity:1}
 .oasis-slide img{width:100%;height:100%;object-fit:cover;display:block}

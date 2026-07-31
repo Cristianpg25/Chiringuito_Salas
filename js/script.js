@@ -92,7 +92,7 @@ function startOasisCycle(){
     if(!visible.length)return
     oasisIndex=(oasisIndex+1)%visible.length
     renderOasisSlide()
-  },4500)
+  },3000)
 }
 
 function setMode(mode){
@@ -100,6 +100,8 @@ function setMode(mode){
   oasisIndex=0
   renderOasisSlide()
   if(!reducedMotion)startOasisCycle()
+
+  document.body.classList.toggle('mode-night',mode==='night')
 
   const dayBtn=document.getElementById('modoBtnDay')
   const nightBtn=document.getElementById('modoBtnNight')
