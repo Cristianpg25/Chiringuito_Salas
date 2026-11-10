@@ -123,6 +123,92 @@ if(oasisContainer){
   setMode('day')
 }
 
+/* ── PARALLAX PANORÁMICO ── */
+const reduceMotionQuery=window.matchMedia('(prefers-reduced-motion:reduce)')
+document.querySelectorAll('.pano').forEach((section)=>{
+  const sticky=section.querySelector('.pano__sticky')
+  const img=section.querySelector('.pano__img')
+  if(!sticky||!img)return
+  let distance=0,travel=0,queued=false
+
+  function measure(){
+    if(reduceMotionQuery.matches){section.style.height='';img.style.transform='';return}
+    const viewH=sticky.clientHeight
+    distance=Math.max(0,img.getBoundingClientRect().width-sticky.clientWidth)
+    travel=Math.min(Math.max(distance,viewH),viewH*4)
+    section.style.height=(viewH+travel)+'px'
+    update()
+  }
+
+  function update(){
+    queued=false
+    if(reduceMotionQuery.matches)return
+    const top=section.getBoundingClientRect().top
+    const p=Math.min(1,Math.max(0,-top/travel||0))
+    img.style.transform='translate3d('+(-p*distance)+'px,0,0)'
+  }
+
+  window.addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(update)}},{passive:true})
+  new ResizeObserver(measure).observe(sticky)
+  reduceMotionQuery.addEventListener('change',measure)
+  ;(img.complete?Promise.resolve():(img.decode?img.decode().catch(()=>{}):Promise.resolve())).then(measure)
+  img.addEventListener('load',measure)
+  window.addEventListener('load',measure)
+})
+
+/* ── PLATOS ESTRELLA — carrusel 3D ── */
+const platosCarousel=document.getElementById('platosCarousel')
+if(platosCarousel){
+  const stage=document.getElementById('platosStage')
+  const items=[...stage.querySelectorAll('.carousel3d-item')]
+  const total=items.length
+  let platosIndex=0
+  let platosTimer=null
+
+  function renderCarousel(){
+    stage.style.transform='rotateY('+(-platosIndex*(360/total))+'deg)'
+    items.forEach((item,i)=>item.classList.toggle('is-front',i===platosIndex))
+  }
+
+  function goToPlato(i){
+    platosIndex=(i+total)%total
+    renderCarousel()
+  }
+
+  function startPlatosCycle(){
+    clearInterval(platosTimer)
+    if(reducedMotion)return
+    platosTimer=setInterval(()=>goToPlato(platosIndex+1),4500)
+  }
+
+  items.forEach((item,i)=>item.addEventListener('click',()=>{goToPlato(i);startPlatosCycle()}))
+  document.getElementById('platosPrev').addEventListener('click',()=>{goToPlato(platosIndex-1);startPlatosCycle()})
+  document.getElementById('platosNext').addEventListener('click',()=>{goToPlato(platosIndex+1);startPlatosCycle()})
+
+  platosCarousel.addEventListener('keydown',(e)=>{
+    if(e.key==='ArrowLeft'){goToPlato(platosIndex-1);startPlatosCycle()}
+    if(e.key==='ArrowRight'){goToPlato(platosIndex+1);startPlatosCycle()}
+  })
+
+  let touchStartX=null
+  platosCarousel.addEventListener('touchstart',(e)=>{touchStartX=e.touches[0].clientX;clearInterval(platosTimer)},{passive:true})
+  platosCarousel.addEventListener('touchend',(e)=>{
+    if(touchStartX===null)return
+    const dx=e.changedTouches[0].clientX-touchStartX
+    if(Math.abs(dx)>40)goToPlato(platosIndex+(dx<0?1:-1))
+    touchStartX=null
+    startPlatosCycle()
+  },{passive:true})
+
+  platosCarousel.addEventListener('mouseenter',()=>clearInterval(platosTimer))
+  platosCarousel.addEventListener('mouseleave',startPlatosCycle)
+  platosCarousel.addEventListener('focusin',()=>clearInterval(platosTimer))
+  platosCarousel.addEventListener('focusout',startPlatosCycle)
+
+  renderCarousel()
+  startPlatosCycle()
+}
+
 /* ── SOUNDS OF SALAS — lista de conciertos interactiva ── */
 const soundsList=document.getElementById('soundsList')
 if(soundsList){
