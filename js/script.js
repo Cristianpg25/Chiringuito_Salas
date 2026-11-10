@@ -159,19 +159,35 @@ document.querySelectorAll('.pano').forEach((section)=>{
 /* ── PLATOS ESTRELLA — carrusel 3D ── */
 const platosCarousel=document.getElementById('platosCarousel')
 if(platosCarousel){
-  const stage=document.getElementById('platosStage')
-  const items=[...stage.querySelectorAll('.carousel3d-item')]
+  const items=[...platosCarousel.querySelectorAll('.carousel3d-item')]
   const total=items.length
+  const half=Math.floor(total/2)
   let platosIndex=0
   let platosTimer=null
 
+  function slotOf(i){
+    const o=((i-platosIndex)%total+total)%total
+    return o>half?o-total:o
+  }
+
   function renderCarousel(){
-    stage.style.transform='rotateY('+(-platosIndex*(360/total))+'deg)'
-    items.forEach((item,i)=>item.classList.toggle('is-front',i===platosIndex))
+    items.forEach((item,i)=>{
+      const pos=slotOf(i)
+      const prev=Number(item.dataset.pos)
+      // La tarjeta que pasa de un extremo al otro reaparece con fundido en lugar de cruzar el escenario
+      if(Math.abs(pos-prev)>half){
+        item.classList.add('is-wrapping')
+        item.dataset.pos=pos
+        void item.offsetWidth
+        item.classList.remove('is-wrapping')
+      }else{
+        item.dataset.pos=pos
+      }
+    })
   }
 
   function goToPlato(i){
-    platosIndex=(i+total)%total
+    platosIndex=((i%total)+total)%total
     renderCarousel()
   }
 
@@ -181,7 +197,10 @@ if(platosCarousel){
     platosTimer=setInterval(()=>goToPlato(platosIndex+1),4500)
   }
 
-  items.forEach((item,i)=>item.addEventListener('click',()=>{goToPlato(i);startPlatosCycle()}))
+  items.forEach(item=>item.addEventListener('click',()=>{
+    const pos=Number(item.dataset.pos)
+    if(pos!==0){goToPlato(platosIndex+pos);startPlatosCycle()}
+  }))
   document.getElementById('platosPrev').addEventListener('click',()=>{goToPlato(platosIndex-1);startPlatosCycle()})
   document.getElementById('platosNext').addEventListener('click',()=>{goToPlato(platosIndex+1);startPlatosCycle()})
 

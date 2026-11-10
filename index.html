@@ -141,6 +141,15 @@
 </section>
 
 <!-- ══════════════════════════════════
+     PARALLAX PANORÁMICO — playa
+══════════════════════════════════ -->
+<section class="pano" id="panoramica" aria-label="Panorámica de la playa junto a Chiringuito Salas">
+  <div class="pano__sticky">
+    <img class="pano__img" src="assets/images/Playa_Panoramica.jpg" width="1996" height="420" decoding="async" loading="lazy" alt="Panorámica de la playa a primera hora: la cala con pinos y rocas a la izquierda, el mar en calma bajo el sol y las casas blancas frente a la arena a la derecha">
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
      EAT & DRINK — adaptado con producto fresco
 ══════════════════════════════════ -->
 <section id="eat-drink" aria-label="Producto fresco">
@@ -172,7 +181,7 @@
 </section>
 
 <!-- ══════════════════════════════════
-     PLATOS ESTRELLA — grid vertical
+     PLATOS ESTRELLA — carrusel 3D
 ══════════════════════════════════ -->
 <section id="platos" aria-label="Platos estrella">
   <div class="platos-header reveal">
@@ -181,23 +190,23 @@
   </div>
   <div class="carousel3d reveal" id="platosCarousel" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Platos estrella, usa las flechas para navegar">
     <div class="carousel3d-stage" id="platosStage">
-      <figure class="carousel3d-item" style="--i:0" data-index="0">
+      <figure class="carousel3d-item" data-pos="0">
         <img src="assets/images/Pulpo.jpg" alt="Pata de pulpo a la plancha" loading="lazy">
         <figcaption>Pata de pulpo</figcaption>
       </figure>
-      <figure class="carousel3d-item" style="--i:1" data-index="1">
+      <figure class="carousel3d-item" data-pos="1">
         <img src="assets/images/Arroz_negro.jpg" alt="Arroz negro con sepia" loading="lazy">
         <figcaption>Arroz negro</figcaption>
       </figure>
-      <figure class="carousel3d-item" style="--i:2" data-index="2">
+      <figure class="carousel3d-item" data-pos="2">
         <img src="assets/images/Frutura.jpg" alt="Fritura de pescado y marisco" loading="lazy">
         <figcaption>Fritura Salas</figcaption>
       </figure>
-      <figure class="carousel3d-item" style="--i:3" data-index="3">
+      <figure class="carousel3d-item" data-pos="-2">
         <img src="assets/images/Ceviche_de_corvina.jpg" alt="Ceviche de corvina" loading="lazy">
         <figcaption>Ceviche de corvina</figcaption>
       </figure>
-      <figure class="carousel3d-item" style="--i:4" data-index="4">
+      <figure class="carousel3d-item" data-pos="-1">
         <img src="assets/images/Taco_atun.jpg" alt="Taco de atún rojo" loading="lazy">
         <figcaption>Taco de atún</figcaption>
       </figure>
@@ -215,11 +224,11 @@
 </section>
 
 <!-- ══════════════════════════════════
-     PARALLAX PANORÁMICO
+     PARALLAX DE FONDO — costa
 ══════════════════════════════════ -->
-<section class="pano" id="panoramica" aria-label="Vista panorámica de la costa mediterránea">
-  <div class="pano__sticky">
-    <img class="pano__img" id="panoImg" src="assets/images/Costa_Panoramica.jpg" width="2000" height="734" decoding="async" loading="lazy" alt="Vista aérea panorámica de la costa mediterránea, con aguas turquesas, calas rocosas y pinar, el paisaje que envuelve a Chiringuito Salas">
+<section class="bgpx" id="costa" aria-label="Vista aérea de la costa mediterránea">
+  <div class="bgpx__clip">
+    <img class="bgpx__img" src="assets/images/Costa_Panoramica.jpg" width="2000" height="734" decoding="async" alt="Vista aérea de la costa mediterránea, con aguas turquesas, calas rocosas y pinar, el paisaje que envuelve a Chiringuito Salas">
   </div>
 </section>
 
