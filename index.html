@@ -59,6 +59,7 @@
   <a href="#platos" onclick="closeMenu()">Platos estrella</a>
   <a href="#sounds" onclick="closeMenu()">Conciertos</a>
   <a href="#oasis" onclick="closeMenu()">El local</a>
+  <a href="#instagram" onclick="closeMenu()">Instagram</a>
   <a href="#contacto-cta" onclick="closeMenu()">Reservar</a>
 </div>
 
@@ -115,7 +116,7 @@
   <div class="historia-inner">
     <div class="reveal">
       <div class="historia-img-wrap">
-        <img class="historia-img" src="assets/images/Francisco_Salas.jpg" alt="Francisco Salas, fundador del Chiringuito Salas" width="520" height="650" loading="lazy">
+        <img class="historia-img" src="assets/images/Francisco_Salas.jpg" alt="Salas, fundador del Chiringuito Salas" width="520" height="650" loading="lazy">
         <div class="historia-img-badge">
           <strong>30+</strong>
           <span>años de historia</span>
@@ -129,13 +130,22 @@
         <h2 class="section-title">Más de tres décadas<br><em>frente al Mediterráneo</em></h2>
       </div>
       <div class="reveal rd1">
-        <p class="historia-text">Todo comenzó con Francisco Salas, que transformó un modesto puesto de helados en la playa Mar Rabiosa en el chiringuito que ves hoy. Junto al castillo de Terreros y el Pichirichi como telón de fondo, aquí el tiempo siempre ha pasado más despacio.</p>
+        <p class="historia-text">Todo comenzó con Salas, que transformó un modesto puesto de helados en la playa Mar Rabiosa en el chiringuito que ves hoy. Junto al castillo de Terreros y el Pichirichi como telón de fondo, aquí el tiempo siempre ha pasado más despacio.</p>
         <p class="historia-text">Producto local, producto fresco. Desde las gambas recién descargadas hasta el aceite de OleoAlmanzora. Sabores que no se improvisan — se heredan.</p>
       </div>
       <div class="reveal rd2">
-        <p class="historia-firma">Francisco Salas<span>Fundador</span></p>
+        <p class="historia-firma">Salas<span>Fundador</span></p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PARALLAX PANORÁMICO — playa
+══════════════════════════════════ -->
+<section class="pano" id="panoramica" aria-label="Panorámica de la playa junto a Chiringuito Salas">
+  <div class="pano__sticky">
+    <img class="pano__img" src="assets/images/Playa_Panoramica.jpg" width="1996" height="420" decoding="async" loading="lazy" alt="Panorámica de la playa a primera hora: la cala con pinos y rocas a la izquierda, el mar en calma bajo el sol y las casas blancas frente a la arena a la derecha">
   </div>
 </section>
 
@@ -171,37 +181,54 @@
 </section>
 
 <!-- ══════════════════════════════════
-     PLATOS ESTRELLA — grid vertical
+     PLATOS ESTRELLA — carrusel 3D
 ══════════════════════════════════ -->
 <section id="platos" aria-label="Platos estrella">
   <div class="platos-header reveal">
     <span class="section-label">Lo que nos piden siempre</span>
     <h2 class="section-title">Platos estrella</h2>
   </div>
-  <div class="platos-grid">
-    <a class="plato-item reveal" href="#" onclick="openCarta();return false;">
-      <img src="assets/images/Pulpo.jpg" alt="Pata de pulpo a la plancha" loading="lazy">
-      <span>Pata de pulpo</span>
-    </a>
-    <a class="plato-item reveal rd1" href="#" onclick="openCarta();return false;">
-      <img src="assets/images/Arroz_negro.jpg" alt="Arroz negro con sepia" loading="lazy">
-      <span>Arroz negro</span>
-    </a>
-    <a class="plato-item reveal rd2" href="#" onclick="openCarta();return false;">
-      <img src="assets/images/Frutura.jpg" alt="Fritura de pescado y marisco" loading="lazy">
-      <span>Fritura Salas</span>
-    </a>
-    <a class="plato-item reveal" href="#" onclick="openCarta();return false;">
-      <img src="assets/images/Ceviche_de_corvina.jpg" alt="Ceviche de corvina" loading="lazy">
-      <span>Ceviche de corvina</span>
-    </a>
-    <a class="plato-item reveal rd1" href="#" onclick="openCarta();return false;">
-      <img src="assets/images/Taco_atun.jpg" alt="Taco de atún rojo" loading="lazy">
-      <span>Taco de atún</span>
-    </a>
+  <div class="carousel3d reveal" id="platosCarousel" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Platos estrella, usa las flechas para navegar">
+    <div class="carousel3d-stage" id="platosStage">
+      <figure class="carousel3d-item" data-pos="0">
+        <img src="assets/images/Pulpo.jpg" alt="Pata de pulpo a la plancha" loading="lazy">
+        <figcaption>Pata de pulpo</figcaption>
+      </figure>
+      <figure class="carousel3d-item" data-pos="1">
+        <img src="assets/images/Arroz_negro.jpg" alt="Arroz negro con sepia" loading="lazy">
+        <figcaption>Arroz negro</figcaption>
+      </figure>
+      <figure class="carousel3d-item" data-pos="2">
+        <img src="assets/images/Frutura.jpg" alt="Fritura de pescado y marisco" loading="lazy">
+        <figcaption>Fritura Salas</figcaption>
+      </figure>
+      <figure class="carousel3d-item" data-pos="-2">
+        <img src="assets/images/Ceviche_de_corvina.jpg" alt="Ceviche de corvina" loading="lazy">
+        <figcaption>Ceviche de corvina</figcaption>
+      </figure>
+      <figure class="carousel3d-item" data-pos="-1">
+        <img src="assets/images/Taco_atun.jpg" alt="Taco de atún rojo" loading="lazy">
+        <figcaption>Taco de atún</figcaption>
+      </figure>
+    </div>
+    <button class="carousel3d-btn prev" id="platosPrev" aria-label="Plato anterior">
+      <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6V6z"></path></svg>
+    </button>
+    <button class="carousel3d-btn next" id="platosNext" aria-label="Plato siguiente">
+      <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6V6z"></path></svg>
+    </button>
   </div>
   <div class="platos-cta reveal">
     <button onclick="openCarta()" class="btn-primary">Ver carta completa</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PARALLAX DE FONDO — costa
+══════════════════════════════════ -->
+<section class="bgpx" id="costa" aria-label="Vista aérea de la costa mediterránea">
+  <div class="bgpx__clip">
+    <img class="bgpx__img" src="assets/images/Costa_Panoramica.jpg" width="2000" height="734" decoding="async" alt="Vista aérea de la costa mediterránea, con aguas turquesas, calas rocosas y pinar, el paisaje que envuelve a Chiringuito Salas">
   </div>
 </section>
 
@@ -300,6 +327,26 @@
       <div class="oasis-slide" data-mode="night"><img src="assets/images/salas.jpg" alt="Chiringuito Salas de noche" loading="lazy"></div>
       <div class="oasis-slide" data-mode="night"><img src="assets/images/Salas_atardecer.jpg" alt="Chiringuito Salas al atardecer" loading="lazy"></div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     INSTAGRAM
+══════════════════════════════════ -->
+<section id="instagram" aria-label="Síguenos en Instagram">
+  <div class="instagram-heading reveal">
+    <span class="section-label">Nuestro día a día</span>
+    <h2 class="section-title">Síguenos en <em>Instagram</em></h2>
+  </div>
+  <div class="instagram-embed reveal rd1">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfUkZeUhEVw/" data-instgrm-version="14">
+      <div class="instagram-fallback">
+        <a href="https://www.instagram.com/reel/DfUkZeUhEVw/" target="_blank" rel="noopener noreferrer" class="btn-outline-dark">Ver publicación en Instagram</a>
+      </div>
+    </blockquote>
+  </div>
+  <div class="instagram-cta reveal">
+    <a href="https://www.instagram.com/chiringuitosalasterreros/" target="_blank" rel="noopener noreferrer" class="btn-outline-dark">@chiringuitosalasterreros</a>
   </div>
 </section>
 
@@ -450,6 +497,7 @@
       <a href="#platos">Platos estrella</a>
       <a href="#sounds">Conciertos</a>
       <a href="#oasis">El local</a>
+      <a href="#instagram">Instagram</a>
       <a href="#contacto-cta">Contacto</a>
     </div>
     <div class="footer-col">
@@ -493,5 +541,6 @@
 </div>
 
 <script src="js/script.js"></script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
